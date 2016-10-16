@@ -19,14 +19,13 @@ export default function aframeMapComponent(aframe, componentName) {
         shader: 'flat',
         side: 'both',
         transparent: true,
-        width: 16,
-        height: 9,
       },
     },
 
     mappings: {
       height: 'geometry.height',
       width: 'geometry.width',
+      pxToWorldRatio: 'map.pxToWorldRatio',
     },
   }));
 
