@@ -246,6 +246,8 @@ export default function aframeMapComponent(aframe, componentName) {
           style: this.data.style ? this.data.style : defaultMapStyle,
           width: geomComponent.data.width * this.data.pxToWorldRatio,
           height: geomComponent.data.height * this.data.pxToWorldRatio,
+          // Required to ensure the canvas can be used as a texture
+          preserveDrawingBuffer: true,
           hash: false,
           interactive: false,
           attributionControl: false,
@@ -355,6 +357,42 @@ export default function aframeMapComponent(aframe, componentName) {
      * Use to continue or add any dynamic or background behavior such as events.
      */
     play() {
+    },
+
+    /**
+     * Returns {x, y} representing a position relative to the entity's center,
+     * that correspond to the specified geographical location.
+     *
+     * @param {float} long
+     * @param {float} lat
+     */
+    project(long, lat) {
+
+      // The position (origin at top-left corner) in pixel space
+      const {x: pxX, y: pxY} = this._mapInstance.project([long, lat]);
+
+      // The 3D world size of the entity
+      const {width: elWidth, height: elHeight} = this.el.components.geometry.data;
+
+      return {
+        x: (pxX / this.data.pxToWorldRatio) - (elWidth / 2),
+        y: (pxY / this.data.pxToWorldRatio) - (elHeight / 2),
+        z: 0,
+      };
+
+    },
+
+    unproject(x, y) {
+
+      // The 3D world size of the entity
+      const {width: elWidth, height: elHeight} = this.el.components.geometry.data;
+
+      // Converting back to pixel space
+      const pxX = (x + (elWidth / 2)) * this.data.pxToWorldRatio;
+      const pxY = (y + (elHeight / 2)) * this.data.pxToWorldRatio;
+
+      // Return the long / lat of that pixel on the map
+      return this._mapInstance.unproject([pxX, pxY]).toArray();
     },
   });
 }
