@@ -24,8 +24,7 @@ export default function aframeMapComponent(aframe, componentName) {
 
     mappings: {
       height: 'geometry.height',
-      width: 'geometry.width',
-      pxToWorldRatio: 'map.pxToWorldRatio',
+      width: 'geometry.width'
     },
   }));
 

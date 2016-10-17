@@ -6,9 +6,19 @@
   <body>
     <a-scene>
 
-      <a-map width="7" height="4" position="0 1.25 -10"></a-map>
-      <a-box position="-1 0.5 1" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-map
+        map="center: 150.6510958 -33.8474024; zoom: 8"
+        width="7"
+        height="4"
+        position="0 2 -2"
+      ></a-map>
+
+      <!-- A frame around the map! Because... aframe / a-frame / a frame... get it!? -->
+      <a-box position="0 4 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="0 0 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="3.5 2 -2" width="0.1" height="4.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="-3.5 2 -2" width="0.1" height="4.1" depth="0.1" color="#4CC3D9"></a-box>
+
       <a-sky color="#ECECEC"></a-sky>
 
       <a-entity position="0 0 3.8">
