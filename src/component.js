@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import mapboxGL from 'mapbox-gl';
+const mapboxGL = require('mapbox-gl');
 
 const defaultMapStyle = require('./map-style.json');
 
