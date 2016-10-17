@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>A-Frame Map - Basic</title>
+    <script src="../build.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <a-map
+        map="center: 150.6510958 -33.8474024; zoom: 8"
+        width="7"
+        height="4"
+        position="0 2 -2"
+      ></a-map>
+
+      <!-- A frame around the map! Because... aframe / a-frame / a frame... get it!? -->
+      <a-box position="0 4 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="0 0 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="3.5 2 -2" width="0.1" height="4.1" depth="0.1" color="#4CC3D9"></a-box>
+      <a-box position="-3.5 2 -2" width="0.1" height="4.1" depth="0.1" color="#4CC3D9"></a-box>
+
+      <a-sky color="#ECECEC"></a-sky>
+
+      <a-entity position="0 0 3.8">
+        <a-camera></a-camera>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
