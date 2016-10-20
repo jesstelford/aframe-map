@@ -24,7 +24,7 @@ export default function aframeMapComponent(aframe, componentName) {
 
     mappings: {
       height: 'geometry.height',
-      width: 'geometry.width'
+      width: 'geometry.width',
     },
   }));
 
