@@ -70,7 +70,8 @@ function getCanvasContainerAssetElement(id, width, height) {
   // the element (or its parent) are hidden. `position: fixed` means it can be
   // calculated correctly.
   element.style.position = 'fixed';
-  element.style.left = '999999px';
+  element.style.left = '99999px';
+  element.style.top = '0';
 
   if (!document.body.contains(element)) {
     document.body.appendChild(element);
@@ -319,12 +320,13 @@ export default function aframeMapComponent(aframe, componentName) {
         this._mapInstance.setmaxBounds(this.data.maxBounds);
       }
 
-      if (oldData.center !== this.data.center) {
-        this._mapInstance.setCenter(this.data.center);
-      }
-
+      // NOTE: Order is important! Zoom must come before center
       if (oldData.zoom !== this.data.zoom) {
         this._mapInstance.setZoom(this.data.zoom);
+      }
+
+      if (oldData.center !== this.data.center) {
+        this._mapInstance.setCenter(this.data.center);
       }
 
       if (oldData.bearing !== this.data.bearing) {
