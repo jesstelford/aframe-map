@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <title>A-Frame Map - GPS</title>
+    <script src="../build.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <a-map
+        width="7"
+        height="4"
+        position="0 0 0"
+        rotation="-90 0 0"
+      >
+        <a-sphere id="current-location" color="#00f" position="0 0 0" visible="false" radius="0.05"></a-sphere>
+      </a-map>
+
+      <a-sky color="#ECECEC"></a-sky>
+
+      <a-entity position="0 0.4 1">
+        <a-camera></a-camera>
+      </a-entity>
+    </a-scene>
+    <script>
+      var mapEl = document.querySelector('a-map');
+      var currentLocationEl = document.querySelector('#current-location');
+      var setProperty = window.AFRAME.utils.entity.setComponentProperty;
+      var venueCache = {};
+
+      // Creating an inverted cone and adding it to the scene as a place marker
+      function addMarker() {
+
+        var marker = document.createElement('a-entity');
+        var point = document.createElement('a-cone');
+
+        point.setAttribute('height', 0.5);
+        point.setAttribute('radius-bottom', 0);
+        point.setAttribute('radius-top', 0.05);
+        point.setAttribute('rotation', {x: 90, y: 0, z: 0});
+        point.setAttribute('position', {x: 0, y: 0, z: 0.25});
+        point.setAttribute('color', '#f00');
+
+        marker.appendChild(point);
+
+        mapEl.appendChild(marker);
+
+        return marker;
+
+      }
+
+      // Whenever we have a new location, add new markers,
+      // and update all markers positions.
+      // If a marker is off the map, hide it
+      function onLocationUpdate(lat, long, width, height) {
+
+        var halfWidth = width / 2;
+        var halfHeight = height / 2;
+
+        // foursquare's free venues API
+        fetch(`https://api.foursquare.com/v2/venues/explore?client_id=MWVIR52CTGVY0GZGFJB53UEUJRGJETB3SQI4KY1JWAEA1GIO&client_secret=TME3XHDYNTXQX0MMF3AME2TYW1F4KY5QUOI4RL5AP1P0GGXR&v=20161018&m=foursquare&ll=${lat},${long}&section=topPicks&time=any&day=any`)
+          .then(res => res.json())
+          .then(res => {
+            res.response.groups[0].items.map(({venue}) => ({
+              id: venue.id,
+              lat: venue.location.lat,
+              long: venue.location.lng,
+            }))
+            .filter(({id}) => !venueCache[id])
+            .forEach(venue => {
+              venue.marker = addMarker();
+              venueCache[venue.id] = venue;
+            });
+
+            Object.keys(venueCache).forEach(markerId => {
+              var venue = venueCache[markerId];
+              var position = mapEl.components.map.project(venue.long, venue.lat);
+
+              if (
+                position.x > halfWidth
+                || position.x < -halfWidth
+                || position.y > halfHeight
+                || position.y < -halfHeight
+              ) {
+                setProperty(venue.marker, 'visible', false);
+              } else {
+                setProperty(venue.marker, 'visible', true);
+              }
+
+              setProperty(venue.marker, 'position', position);
+            });
+          });
+      }
+
+      // Once the map is loaded
+      mapEl.addEventListener('map-loaded', function() {
+
+        var geomData = mapEl.components.geometry.data;
+
+        var options = {
+          enableHighAccuracy: true,
+        };
+
+        // Get the user's location from the browser
+        navigator.geolocation.watchPosition(function(position) {
+
+          var long = position.coords.longitude;
+          var lat = position.coords.latitude;
+
+          // center the map on that location
+          setProperty(mapEl, 'map.center', long + ' ' + lat);
+
+          // and zoom in: 20 is very zoomed in, 0 is really zoomed out
+          setProperty(mapEl, 'map.zoom', '13');
+
+          // Place the marker in the correct position
+          setProperty(currentLocationEl, 'position', mapEl.components.map.project(long, lat));
+          setProperty(currentLocationEl, 'visible', true);
+
+          onLocationUpdate(lat, long, geomData.width, geomData.height);
+
+        }, function(error) {
+          console.error(error);
+        }, options);
+      });
+
+    </script>
+  </body>
+</html>
