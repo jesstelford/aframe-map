@@ -12,7 +12,8 @@
     "start": "budo examples/main.js:../build.js --serve build.js --dir examples --port 8000 --ssl --live --open -- --debug --verbose -t babelify -t [envify --NODE_ENV development ]",
     "prepublish": "in-publish && npm run dist && npm run build-lib || not-in-publish",
     "preghpages": "npm run build-example && rm -rf gh-pages && mkdir gh-pages && cp -r examples/* gh-pages",
-    "ghpages": "npm run preghpages && ghpages -p gh-pages"
+    "ghpages": "npm run preghpages && ghpages -p gh-pages",
+    "version": "sed -i \"s/\\[Unreleased\\]/\\[Unreleased\\]\\n\\n## \\[$(node -p \"require('./package.json').version\")\\]/g\" CHANGELOG.md && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
