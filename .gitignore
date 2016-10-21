@@ -1,6 +1,7 @@
 dist/
 lib/
-rollup.config.js
+cert.pem
+key.pem
 
 .sw[ponm]
 examples/build.js
