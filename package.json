@@ -13,7 +13,7 @@
     "prepublish": "in-publish && npm run dist && npm run build-lib || not-in-publish",
     "preghpages": "npm run build-example && rm -rf gh-pages && mkdir gh-pages && cp -r examples/* gh-pages",
     "ghpages": "npm run preghpages && ghpages -p gh-pages",
-    "version": "version-changelog CHANGELOG.md && ./cli.js CHANGELOG.md && git add CHANGELOG.md"
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+- Fix changelog enforcement script
+
+## [2.0.1][] - 2016-10-23
+
 - Use changelog enforcement tooling
 
 ## [2.0.0][]
@@ -29,6 +33,7 @@ A real-time street map component for
 powered by [MapBox GL](https://github.com/mapbox/mapbox-gl-js)
 and [osm2vectortiles](osm2vectortiles.org).
 
-[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/jesstelford/aframe-map/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jesstelford/aframe-map/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/jesstelford/aframe-map/tree/v1.0.0
