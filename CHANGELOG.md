@@ -5,9 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [Unreleased][]
 
-## [2.0.0]
+- Use changelog enforcement tooling
+
+## [2.0.0][]
 ### Added
 
 - Added a Points Of Interest example powered by Foursquare's venues API.
@@ -18,7 +20,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   when setting zoom after setting center,
   depending on the width & height of the map.
 
-
 ## [1.0.0] - 2016-10-18
 
 Initial release 🎉
@@ -27,3 +28,7 @@ A real-time street map component for
 [AframeVR](http://aframe.io)
 powered by [MapBox GL](https://github.com/mapbox/mapbox-gl-js)
 and [osm2vectortiles](osm2vectortiles.org).
+
+[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/jesstelford/aframe-map/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/jesstelford/aframe-map/tree/v1.0.0
