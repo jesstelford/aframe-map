@@ -1,6 +1,6 @@
 {
   "name": "aframe-map",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Map entity & component for A-Frame.",
   "main": "lib/index.js",
   "scripts": {
