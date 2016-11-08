@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+## [2.0.3][] - 2016-11-9
+
 ### Fixed
 
 - Included missing default `map-style.json`
@@ -39,7 +41,8 @@ A real-time street map component for
 powered by [MapBox GL](https://github.com/mapbox/mapbox-gl-js)
 and [osm2vectortiles](osm2vectortiles.org).
 
-[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.2...HEAD
+[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.3...HEAD
+[2.0.3]: https://github.com/jesstelford/aframe-map/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/jesstelford/aframe-map/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/jesstelford/aframe-map/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jesstelford/aframe-map/compare/v1.0.0...v2.0.0
