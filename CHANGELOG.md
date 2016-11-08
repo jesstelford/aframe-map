@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Fixed
+
+- Included missing default `map-style.json`
+
 ## [2.0.2][] - 2016-10-23
 
 - Fix changelog enforcement script

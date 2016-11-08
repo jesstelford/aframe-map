@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build-example": "browserify examples/main.js --verbose -t babelify -t uglifyify -t [envify --NODE_ENV development ] > examples/build.js",
-    "build-lib": "mkdir -p lib && sh -c 'cd src && babel *.js --source-root=index.js -d ../lib'",
+    "build-lib": "mkdir -p lib && sh -c 'cd src && babel *.js --source-root=index.js -d ../lib' && cp src/*.json lib/",
     "dist": "mkdir -p dist && browserify src/index.js --verbose --debug --standalone registerAframeMap -g uglifyify -t [ rollupify --config rollup.config.js ] -t babelify -t [envify --NODE_ENV production ] | exorcist dist/out.map > dist/out.js && uglifyjs dist/out.js --screw-ie8 -c -m --in-source-map dist/out.map --source-map dist/aframe-map.min.js.map --source-map-url aframe-map.min.js.map > dist/aframe-map.min.js && rm dist/out*",
     "test": "npm run test:lint",
     "test:lint": "eslint ./src",
