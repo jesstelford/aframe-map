@@ -46,8 +46,8 @@ function parseSpacedFloats(value, count, attributeName) {
 function setDimensions(aframe, id, el, width, height) {
 
   const element = document.querySelector(`#${id}`);
-  element.style.width = width;
-  element.style.height = height;
+  element.style.width = `${width}px`;
+  element.style.height = `${height}px`;
 
   aframe.utils.entity.setComponentProperty(el, 'material.width', width);
   aframe.utils.entity.setComponentProperty(el, 'material.height', height);
@@ -63,8 +63,8 @@ function getCanvasContainerAssetElement(id, width, height) {
   }
 
   element.setAttribute('id', id);
-  element.style.width = width;
-  element.style.height = height;
+  element.style.width = `${width}px`;
+  element.style.height = `${height}px`;
 
   // This is necessary because mapbox-gl uses the offsetWidth/Height of the
   // container element to calculate the canvas size.  But those values are 0 if

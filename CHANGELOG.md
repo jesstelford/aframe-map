@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Fixed
+
+- Pixel to world ratio is now correctly calculated
+
 ## [2.0.3][] - 2016-11-9
 
 ### Fixed
