@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Fixed
+
+- Changing styles works correctly.
+
 ## [2.0.4][] - 2016-11-21
 
 ### Fixed

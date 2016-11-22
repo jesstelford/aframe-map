@@ -109,6 +109,16 @@ function createMap(canvasId, options, done) {
   }
 }
 
+function processStyle(style) {
+
+  if (!style) {
+    return defaultMapStyle;
+  }
+
+  return JSON.parse(style);
+
+}
+
 /**
  * @param aframe {Object} The Aframe instance to register with
  * @param componentName {String} The component name to use. Default: 'map'
@@ -134,7 +144,7 @@ export default function aframeMapComponent(aframe, componentName) {
       pxToWorldRatio: {default: 100},
 
       /**
-       * @param {string} [style=''] - A URL to a [MapBox
+       * @param {string} [style=''] - A URL-encoded JSON object of a [MapBox
        * style](https://mapbox.com/mapbox-gl-style-spec/). If none is provided,
        * a default style will be loaded.
        */
@@ -241,11 +251,13 @@ export default function aframeMapComponent(aframe, componentName) {
 
       const geomComponent = this.el.components.geometry;
 
+      const style = processStyle(this.data.style);
+
       const options = Object.assign(
         {},
         this.data,
         {
-          style: this.data.style ? this.data.style : defaultMapStyle,
+          style,
           width: geomComponent.data.width * this.data.pxToWorldRatio,
           height: geomComponent.data.height * this.data.pxToWorldRatio,
           // Required to ensure the canvas can be used as a texture
@@ -280,6 +292,7 @@ export default function aframeMapComponent(aframe, componentName) {
 
         this.el.emit(MAP_LOADED_EVENT);
       });
+
     },
 
     /**
@@ -306,7 +319,8 @@ export default function aframeMapComponent(aframe, componentName) {
       }
 
       if (oldData.style !== this.data.style) {
-        this._mapInstance.setStyle(this.data.style);
+        const style = processStyle(this.data.style);
+        this._mapInstance.setStyle(style);
       }
 
       if (oldData.minZoom !== this.data.minZoom) {
