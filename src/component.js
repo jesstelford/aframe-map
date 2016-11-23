@@ -393,7 +393,9 @@ export default function aframeMapComponent(aframe, componentName) {
 
       return {
         x: (pxX / this.data.pxToWorldRatio) - (elWidth / 2),
-        y: (pxY / this.data.pxToWorldRatio) - (elHeight / 2),
+        // y-coord is inverted (positive up in world space, positive down in
+        // pixel space)
+        y: -(pxY / this.data.pxToWorldRatio) + (elHeight / 2),
         z: 0,
       };
 
@@ -406,7 +408,9 @@ export default function aframeMapComponent(aframe, componentName) {
 
       // Converting back to pixel space
       const pxX = (x + (elWidth / 2)) * this.data.pxToWorldRatio;
-      const pxY = (y + (elHeight / 2)) * this.data.pxToWorldRatio;
+      // y-coord is inverted (positive up in world space, positive down in
+      // pixel space)
+      const pxY = ((elHeight / 2) - y) * this.data.pxToWorldRatio;
 
       // Return the long / lat of that pixel on the map
       return this._mapInstance.unproject([pxX, pxY]).toArray();
