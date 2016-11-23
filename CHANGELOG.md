@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+## [2.0.6][] - 2016-11-23
+
 ### Fixed
 
 - Correct projection between world and pixel coordinates
@@ -57,7 +59,8 @@ A real-time street map component for
 powered by [MapBox GL](https://github.com/mapbox/mapbox-gl-js)
 and [osm2vectortiles](osm2vectortiles.org).
 
-[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.5...HEAD
+[Unreleased]: https://github.com/jesstelford/aframe-map/compare/v2.0.6...HEAD
+[2.0.6]: https://github.com/jesstelford/aframe-map/compare/v2.0.5...v2.0.6
 [2.0.5]: https://github.com/jesstelford/aframe-map/compare/v2.0.4...v2.0.5
 [2.0.4]: https://github.com/jesstelford/aframe-map/compare/v2.0.3...v2.0.4
 [2.0.3]: https://github.com/jesstelford/aframe-map/compare/v2.0.2...v2.0.3
