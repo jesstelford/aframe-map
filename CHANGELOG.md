@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Fixed
+
+- Correct projection between world and pixel coordinates
+
 ## [2.0.5][] - 2016-11-22
 
 ### Fixed
