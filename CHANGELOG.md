@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Fixed
+
+- Only set the center value when it's actually changed
+
 ## [2.1.0][] - 2016-11-24
 
 ### Added

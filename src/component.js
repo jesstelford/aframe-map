@@ -342,7 +342,7 @@ export default function aframeMapComponent(aframe, componentName) {
         jumpOptions.zoom = this.data.zoom;
       }
 
-      if (oldData.center !== this.data.center) {
+      if (!aframe.utils.deepEqual(oldData.center, this.data.center)) {
         jumpOptions.center = this.data.center;
       }
 
