@@ -93,3 +93,4 @@ server](http://osm2vectortiles.org/docs/getting-started/)!
 | event name | data | description |
 |---|---|---|
 | `map-loaded` | (none) | Fired on the first render of the map component |
+| `map-moveend` | (none) | Fired when zoom, center, bearing, or pitch are changed _after_ the initial render |
