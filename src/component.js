@@ -5,6 +5,7 @@ const mapboxGL = require('mapbox-gl');
 const defaultMapStyle = require('./map-style.json');
 
 const MAP_LOADED_EVENT = 'map-loaded';
+const MAP_MOVE_END_EVENT = 'map-moveend';
 
 function parseSpacedFloats(value, count, attributeName) {
 
@@ -335,21 +336,30 @@ export default function aframeMapComponent(aframe, componentName) {
         this._mapInstance.setmaxBounds(this.data.maxBounds);
       }
 
-      // NOTE: Order is important! Zoom must come before center
+      const jumpOptions = {};
+
       if (oldData.zoom !== this.data.zoom) {
-        this._mapInstance.setZoom(this.data.zoom);
+        jumpOptions.zoom = this.data.zoom;
       }
 
       if (oldData.center !== this.data.center) {
-        this._mapInstance.setCenter(this.data.center);
+        jumpOptions.center = this.data.center;
       }
 
       if (oldData.bearing !== this.data.bearing) {
-        this._mapInstance.setBearing(this.data.bearing);
+        jumpOptions.bearing = this.data.bearing;
       }
 
       if (oldData.pitch !== this.data.pitch) {
-        this._mapInstance.setPitch(this.data.pitch);
+        jumpOptions.pitch = this.data.pitch;
+      }
+
+      if (Object.keys(jumpOptions).length > 0) {
+        // A way to signal when these async actions have completed
+        this._mapInstance.once('moveend', _ => {
+          this.el.emit(MAP_MOVE_END_EVENT);
+        });
+        this._mapInstance.jumpTo(jumpOptions); // moveend
       }
 
     },

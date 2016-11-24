@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+### Added
+
+- Fire `map-moveend` event when zoom, center, bearing, or pitch are changed
+  _after_ the initial render
+
 ### Fixed
 
 - Latest mapbox-gl-js dependency which comes with performance enhancements and
