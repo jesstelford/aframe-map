@@ -14,7 +14,7 @@ Use directly from the unpkg CDN:
 ```html
 <head>
   <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-map"></script>
+  <script src="https://unpkg.com/aframe-map/dist/aframe-map.min.js"></script>
   <script>
     registerAframeMap(window.AFRAME);
   </script>
@@ -59,7 +59,7 @@ _Note: The `<a-map>` entity automatically includes the
 
 ##### A note on fidelity
 
-This higher `pxToWorldRatio`, the more map area will be displayed per world
+The higher `pxToWorldRatio`, the more map area will be displayed per world
 unit. That canvas has to be translated into a plane in world space. This is
 combined with the width and height in world space (from geometry.width and
 geometry.height on the entity) to set up the plane for rendering in 3D.
