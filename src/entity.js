@@ -10,7 +10,6 @@ export default function aframeMapComponent(aframe, componentName) {
 
   window.AFRAME.registerPrimitive(`a-${componentName}`, extendDeep({}, meshMixin, {
     defaultComponents: {
-      [componentName]: {},
       geometry: {
         primitive: 'plane',
       },
@@ -20,6 +19,7 @@ export default function aframeMapComponent(aframe, componentName) {
         side: 'both',
         transparent: true,
       },
+      [componentName]: {},
     },
 
     mappings: {
