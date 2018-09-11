@@ -856,7 +856,7 @@
   "version": 8,
   "sources": {
     "mapbox": {
-      "url": "https://osm2vectortiles-https-proxy.now.sh/tiles.json",
+      "url": "https://osm2vectortiles.tileserver.com/v2.json",
       "type": "vector"
     }
   },
