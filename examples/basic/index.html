@@ -7,12 +7,12 @@
   <body>
     <a-scene>
 
-      <a-map
+      <a-entity
+        geometry="primitive: plane; width: 4; height: 2;"
+        material="color: #ffffff; shader: flat; side: both; transparent: true;"
         map="center: 150.6510958 -33.8474024; zoom: 8"
-        width="7"
-        height="4"
         position="0 2 -2"
-      ></a-map>
+      ></a-entity>
 
       <!-- A frame around the map! Because... aframe / a-frame / a frame... get it!? -->
       <a-box position="0 4 -2" width="7.1" height="0.1" depth="0.1" color="#4CC3D9"></a-box>

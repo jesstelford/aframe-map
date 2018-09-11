@@ -282,7 +282,7 @@ AFRAME.registerComponent('map', {
       const canvasId = document.querySelector(`#${this._canvasContainerId} canvas`).id;
 
       // Pointing this aframe entity to that canvas as its source
-      this.el.setAttribute('src', `#${canvasId}`);
+      this.el.setAttribute('material', 'src', `#${canvasId}`);
 
       this.el.emit(MAP_LOADED_EVENT);
     });
