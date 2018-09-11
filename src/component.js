@@ -15,7 +15,7 @@ function parseSpacedFloats (value, count, attributeName) {
   let values = value;
 
   if (Object.prototype.toString.call(value) === '[object String]') {
-    values = value.split(' ');
+    values = value.split(',');
   }
 
   if (values.length !== count) {

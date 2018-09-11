@@ -38,7 +38,7 @@
           var long = position.coords.longitude;
           var lat = position.coords.latitude;
 
-          setProperty(mapEl, 'map.center', long + ' ' + lat);
+          setProperty(mapEl, 'map.center', long + ',' + lat);
           setProperty(mapEl, 'map.zoom', '10');
 
           setProperty(markerEl, 'position', mapEl.components.map.project(long, lat));

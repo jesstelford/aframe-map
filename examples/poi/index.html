@@ -108,7 +108,7 @@
           var lat = position.coords.latitude;
 
           // center the map on that location
-          setProperty(mapEl, 'map.center', long + ' ' + lat);
+          setProperty(mapEl, 'map.center', long + ',' + lat);
 
           // and zoom in: 20 is very zoomed in, 0 is really zoomed out
           setProperty(mapEl, 'map.zoom', '13');
