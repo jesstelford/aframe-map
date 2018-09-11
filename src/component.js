@@ -1,6 +1,6 @@
 const cuid = require('cuid');
 
-const mapboxGL = require('mapbox-gl');
+const mapboxgl = require('mapbox-gl');
 
 const defaultMapStyle = require('./map-style.json');
 
@@ -88,7 +88,7 @@ function createMap (canvasId, options, done) {
   const canvasContainer = getCanvasContainerAssetElement(canvasId, options.width, options.height);
 
   // eslint-disable-next-line no-new
-  const mapboxInstance = new mapboxGL.Map(Object.assign({
+  const mapboxInstance = new mapboxgl.Map(Object.assign({
     container: canvasContainer
   }, options));
 
@@ -110,7 +110,11 @@ function processStyle (style) {
     return defaultMapStyle;
   }
 
-  return JSON.parse(style);
+  try {
+    return JSON.parse(style);
+  } catch (e) {
+    return style;
+  }
 }
 
   /**
@@ -137,6 +141,12 @@ AFRAME.registerComponent('map', {
      * a default style will be loaded.
      */
     style: {default: ''},
+
+    /**
+     * @param {string} [accessToken=''] - Optional access token for styles 
+     * from Mapbox.
+     */
+    accessToken: {default: ''},
 
     /**
      * @param {int} [minZoom=0] - The minimum zoom level of the map (0-20). (0
@@ -231,6 +241,10 @@ AFRAME.registerComponent('map', {
   },
   init: function () {
     const geomComponent = this.el.components.geometry;
+
+    if (this.data.accessToken) {
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dHJlIiwiYSI6IjRpa3ItcWcifQ.s0AGgKi0ai23K5OJvkEFnA'
+    }
 
     const style = processStyle(this.data.style);
 

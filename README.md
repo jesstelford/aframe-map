@@ -56,7 +56,8 @@ _Note: The `<a-map>` entity automatically includes the
 | attribute | type | default | description |
 |---|---|---|---|
 | pxToWorldRatio | number | 100 | The number of pixels per world unit to render the map on the plane. ie; when set to 100, will display 100 pixels per 1 meter in world space. (see [a note on fidelity](#a-note-on-fidelity)) |
-| style | string | '' | A `JSON.stringify`'d [MapBox style](https://mapbox.com/mapbox-gl-style-spec/). If none is provided, a default style will be loaded. (see [creating a style](#creating-a-style)) |
+| accessToken | string | | An optional access token if using Mapbox's style. Not needed if you use your own styling |
+| style | string | '' | Either a Mapbox URL (like `mapbox://styles/mapbox/...`) or a `JSON.stringify`'d [MapBox style](https://mapbox.com/mapbox-gl-style-spec/). If none is provided, a default style will be loaded. (see [creating a style](#creating-a-style)) |
 | ... | | | All other options are passed directly to Mapbox GL |
 
 ##### A note on fidelity
