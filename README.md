@@ -19,11 +19,8 @@ Use directly from the unpkg CDN:
 
 ```html
 <head>
-  <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-map/dist/aframe-map.min.js"></script>
-  <script>
-    registerAframeMap(window.AFRAME);
-  </script>
 </head>
 
 <body>
@@ -45,9 +42,8 @@ npm install aframe-map
 Then register and use.
 
 ```javascript
-import aframe from 'aframe';
-import registerMap from 'aframe-map';
-registerMap(aframe);
+import 'aframe';
+import 'aframe-map';
 ```
 
 ### `map` component
